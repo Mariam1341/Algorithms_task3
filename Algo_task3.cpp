@@ -152,7 +152,7 @@ void remove_position(int position){
 			delete current;
 			size--;
 		}
-	}print();
+	}
 }
 
 void menu_linked(){
