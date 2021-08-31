@@ -65,7 +65,7 @@ void insert_position(int position, int element){  //Function to add the item at 
 			} 			  	    
 	}size++;	         
 }
-	
+
 void remove_item(int item){
 	Node *current, *prev_current;
 	if (isEmpty()){
@@ -155,6 +155,16 @@ void remove_position(int position){
 	}
 }
 
+void remove_all(){
+	for (int i = 0; i <= size; i++ )
+	{
+	remove_position(size);
+	size--;
+	 
+		}	
+	
+}
+
 void menu_linked(){
 	
 	int choice, choice_ins, item,position;
@@ -172,6 +182,7 @@ void menu_linked(){
 				} remove_item(item);  // to remove the key for exit(999)
 				print();
 			    menu_linked();
+			    break;
 			case 2:				
 				printf("\nEnter the item you want to insert:");
 				while(item != 999){
@@ -218,7 +229,8 @@ void menu_linked(){
 			   menu_linked();						
 	    	}
 		}
-	else{
+	else if (choice == 3) {
+		remove_all();
 		main_menu();
 	}	
 }
@@ -249,6 +261,9 @@ void queue_linked(){
 			printf("The rear item: %d\n", rear->item);	
 			queue_linked();
 	   case 5:
+	
+	        remove_all();
+	        
 	    	main_menu();
 	}
 				
@@ -269,7 +284,7 @@ int pop(){
 }
 
 void get_front(){
-	if(isEmpty()){
+	if(is_empty()){
         printf("The queue is empty");
     }
     else{
@@ -278,12 +293,7 @@ void get_front(){
 }
 
 void get_rear(){
-    if(isEmpty()){
-        printf("The queue is empty");
-    }
-    else{
         printf("The rear item: %d\n",stack[top]);	
-    }
 }
 
 void enqueue_cir(int element) {
@@ -325,31 +335,40 @@ void print_stack(){
 	}
 }
 
+void dequeue_all(){
+	for(int i = top; i > -1 ;i--  )
+		dequeue();
+			}
+
 void queue_stack(int check){
    	int choice, item;
-   	
 	printf("\n1- Enqueue(note: to stop enqueue enter 999)\n2- Dequeue\n3- Get front\n4- Get rear\n5- Main menu\n");
 	scanf("%d", &choice);
-	if (check == 1)
 	switch(choice)
 	{
 		case 1:
 			printf("\nEnter the item you want to enqueue:");
-			while(item != 999){
-				scanf("%d",&item);
 				if (check == 1){
+				//	dequeue_all();
 					max_size = 10;
 	                stack[10];
-					enqueue_cir(item);
-				}else{	
+					while(item != 999){
+			     	scanf("%d",&item);
+					enqueue_cir(item);}
+					
+				}if (check ==0){	
+					dequeue_all();
 				    max_size= 100;
 	                stack[100];
-					enqueue(item);
+					while(item != 999){
+					scanf("%d",&item);
+					enqueue(item);}	
 				}
-			}
+			
 		  	top--; // to remove the key for exit(999)
             print_stack();
 			queue_stack(check);
+			break;
 		case 2:
 		    dequeue();
 		    print_stack();
@@ -361,6 +380,7 @@ void queue_stack(int check){
 			get_rear();	
 			 queue_stack(check);
 	   case 5:
+	   	dequeue_all();
 	    	main_menu();
 	}
 }
@@ -376,8 +396,10 @@ int main_menu(){
 			break;
 	    case 2:
 	    	queue_stack(1);
+	    	break;
 		case 3:
 		   queue_stack(0);
+		   break;
 		case 4:
 		    menu_linked();
 		    break;    
