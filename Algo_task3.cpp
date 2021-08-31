@@ -411,6 +411,7 @@ int main_menu(){
 
 int main(){
 	main_menu();
+	return 0;
 }
 
 
