@@ -244,11 +244,9 @@ void queue_linked(){
 		    queue_linked();
 		case 3:
 			printf("The front item: %d\n", front->item);	
-			print();
 			queue_linked();
 		case 4:
 			printf("The rear item: %d\n", rear->item);	
-			print();
 			queue_linked();
 	   case 5:
 	    	main_menu();
