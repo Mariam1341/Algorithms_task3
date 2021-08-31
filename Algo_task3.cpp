@@ -282,7 +282,7 @@ void get_rear(){
         printf("The queue is empty");
     }
     else{
-        printf("The rear item: %d\n",stack[0]);	
+        printf("The rear item: %d\n",stack[top]);	
     }
 }
 
